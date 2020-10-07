@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe Order, type: :model do
+RSpec.describe Fee, type: :model do
   describe 'implicit_order_column' do
     it 'returns created_at' do
       expect(described_class.implicit_order_column).to eq 'created_at'
@@ -10,13 +10,10 @@ RSpec.describe Order, type: :model do
   end
 
   describe 'relationships' do
-    it { is_expected.to belong_to :merchant }
-    it { is_expected.to belong_to :shopper }
-    it { is_expected.to have_one :fee }
+    it { is_expected.to belong_to :order }
   end
 
   describe 'validations' do
     it { should validate_presence_of(:amount) }
-    it { should validate_presence_of(:created_at) }
   end
 end
