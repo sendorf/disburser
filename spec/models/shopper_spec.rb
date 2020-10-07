@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe Merchant, type: :model do
+RSpec.describe Shopper, type: :model do
   describe 'implicit_order_column' do
     it 'returns created_at' do
       expect(described_class.implicit_order_column).to eq 'created_at'
@@ -12,10 +12,8 @@ RSpec.describe Merchant, type: :model do
   describe 'validations' do
     it { should validate_presence_of(:email) }
     it { should validate_presence_of(:name) }
-    it { should validate_presence_of(:cif) }
+    it { should validate_presence_of(:nif) }
     it { should validate_uniqueness_of(:email) }
-    it { should validate_uniqueness_of(:cif) }
-    it { should_not allow_value('test@test').for(:email) }
-    it { should allow_value('test@test.test').for(:email) }
+    it { should validate_uniqueness_of(:nif) }
   end
 end
