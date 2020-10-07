@@ -25,3 +25,7 @@ test_setup: install ## Setup the test environment
 test: ## Starts the test runner
 	$(info Running tests)
 	@docker-compose run --rm disburser bundle exec rspec --format documentation
+
+rubocop: ## Checks rubocop offenses
+	$(info Passing rubocop)
+	@docker-compose run --rm disburser bundle exec rubocop
