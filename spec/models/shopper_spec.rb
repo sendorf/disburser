@@ -14,10 +14,12 @@ RSpec.describe Shopper, type: :model do
   end
 
   describe 'validations' do
-    it { should validate_presence_of(:email) }
-    it { should validate_presence_of(:name) }
-    it { should validate_presence_of(:nif) }
-    it { should validate_uniqueness_of(:email) }
-    it { should validate_uniqueness_of(:nif) }
+    it { is_expected.to validate_presence_of(:email) }
+    it { is_expected.to validate_presence_of(:name) }
+    it { is_expected.to validate_presence_of(:nif) }
+    it { is_expected.to validate_uniqueness_of(:email) }
+    it { is_expected.to validate_uniqueness_of(:nif) }
+    it { is_expected.not_to allow_value('test@test').for(:email) }
+    it { is_expected.to allow_value('test@test.test').for(:email) }
   end
 end

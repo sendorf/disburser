@@ -14,6 +14,6 @@ RSpec.describe Fee, type: :model do
   end
 
   describe 'validations' do
-    it { should validate_presence_of(:amount) }
+    it { is_expected.to validate_presence_of(:amount) }
   end
 end

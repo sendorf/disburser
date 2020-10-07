@@ -16,7 +16,10 @@ RSpec.describe Order, type: :model do
   end
 
   describe 'validations' do
-    it { should validate_presence_of(:amount) }
-    it { should validate_presence_of(:created_at) }
+    it { is_expected.to validate_presence_of(:amount) }
+    it { is_expected.to validate_presence_of(:created_at) }
+    it { is_expected.to validate_numericality_of(:amount) }
+    it { is_expected.not_to allow_value(-6).for(:amount) }
+    it { is_expected.to allow_value(0.78).for(:amount) }
   end
 end

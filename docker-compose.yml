@@ -19,8 +19,24 @@ services:
       - .env
     depends_on:
       - postgres
+      - sidekiq
     tmpfs:
       - /opt/app/tmp
+  
+  sidekiq:
+    build: .
+    volumes:
+      - .:/myapp
+    links:
+      - postgres
+      - redis
+    env_file:
+      - .env
+    command: bundle exec sidekiq
+
+  redis:
+    image: redis
+    
 
 volumes:
   postgres_data:
