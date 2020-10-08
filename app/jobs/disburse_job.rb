@@ -16,11 +16,11 @@ class DisburseJob < ApplicationJob
   def fee_amount(order_amount)
     case order_amount
     when (0...50)
-      order.amount * 0.01
+      order_amount * 0.01
     when (50...300)
-      order.amount * 0.0095
+      order_amount * 0.0095
     else
-      order.amount * 0.0085
+      order_amount * 0.0085
     end
   end
 end

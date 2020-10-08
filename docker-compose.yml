@@ -26,13 +26,16 @@ services:
   sidekiq:
     build: .
     volumes:
-      - .:/myapp
+      - .:/app
+      - bundle_gems:/usr/local/bundle
     links:
       - postgres
       - redis
     env_file:
       - .env
     command: bundle exec sidekiq
+    tmpfs:
+      - /opt/app/tmp
 
   redis:
     image: redis
